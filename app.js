@@ -26,6 +26,13 @@ app.get("/api/news", (req, res) => {
   });
 });
 
+app.get("/api/stage", (req, res) => {
+  db.query("SELECT * FROM tomo.TB_STAGE;", (err, data) => {
+    if (!err) res.send({ data });
+    else res.send(err);
+  });
+});
+
 app.listen(port, function () {
   console.log("server works on port :" + `http://localhost:${port}`);
 });
