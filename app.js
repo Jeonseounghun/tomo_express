@@ -6,7 +6,7 @@ const db = require("./config/db.js");
 // express 객체 생성
 const app = express();
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "react_tomo/build")));
 
 // app.use("/", function (req, res, next) {
 //   res.sendFile(path.join(__dirname + "/client/build", "index.html"));
