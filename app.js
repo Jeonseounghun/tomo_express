@@ -12,21 +12,21 @@ app.use(express.static(path.join(__dirname, "client/build")));
 //   res.sendFile(path.join(__dirname + "/client/build", "index.html"));
 // });
 
-app.get("/api/main_tap", (req, res) => {
+app.get("/api/main_tap_data", (req, res) => {
   db.query("SELECT * FROM tomo.TB_SUPPORT_BUSINESS;", (err, data) => {
     if (!err) res.send({ data });
     else res.send(err);
   });
 });
 
-app.get("/api/news", (req, res) => {
+app.get("/api/news_data", (req, res) => {
   db.query("SELECT * FROM tomo.TB_NEWS;", (err, data) => {
     if (!err) res.send({ data });
     else res.send(err);
   });
 });
 
-app.get("/api/stage", (req, res) => {
+app.get("/api/stage_data", (req, res) => {
   db.query("SELECT * FROM tomo.TB_STAGE;", (err, data) => {
     if (!err) res.send({ data });
     else res.send(err);
