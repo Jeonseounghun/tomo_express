@@ -8,10 +8,6 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, "react_tomo/build")));
 
-// app.use("/", function (req, res, next) {
-//   res.sendFile(path.join(__dirname + "/client/build", "index.html"));
-// });
-
 app.get("/api/main_tap_data", (req, res) => {
   db.query("SELECT * FROM tomo.TB_SUPPORT_BUSINESS;", (err, data) => {
     if (!err) res.send({ data });
@@ -28,6 +24,13 @@ app.get("/api/news_data", (req, res) => {
 
 app.get("/api/stage_data", (req, res) => {
   db.query("SELECT * FROM tomo.TB_STAGE;", (err, data) => {
+    if (!err) res.send({ data });
+    else res.send(err);
+  });
+});
+
+app.get("/api/image", (req, res) => {
+  db.query("SELECT * FROM tomo.TB_FILE;", (err, data) => {
     if (!err) res.send({ data });
     else res.send(err);
   });
