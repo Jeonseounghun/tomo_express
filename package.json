@@ -8,12 +8,13 @@
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "node app.js",
     "dev:client": "cd react_tomo && yarn start",
-    "build":"cd client && yarn build"
+    "build": "cd client && yarn build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "react": "^17.0.2"
