@@ -6,6 +6,16 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
 
+const axios = require("axios");
+const cheerio = require("cheerio");
+
+
+
+
+
+  console.log(dataList);
+  return dataList;
+}
 // express 객체 생성
 const app = express();
 const connection = mysql.createConnection({
@@ -28,10 +38,11 @@ app.get("/api/main_tap_data", (req, res) => {
   });
 });
 
-app.get("/api/news_data", (req, res) => {
-  db.query("SELECT * FROM tomo.TB_NEWS;", (err, data) => {
-    if (!err) res.send({ data });
-    else res.send(err);
+app.get("/api/news_data", async (req, res) => {
+  db.query("SELECT * FROM tomo.TB_NEWS;", async (err, data) => {
+    if (!err) {
+      res.send({ data });
+    } else res.send(err);
   });
 });
 
