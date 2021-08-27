@@ -13,9 +13,6 @@ const cheerio = require("cheerio");
 
 
 
-  console.log(dataList);
-  return dataList;
-}
 // express 객체 생성
 const app = express();
 const connection = mysql.createConnection({
