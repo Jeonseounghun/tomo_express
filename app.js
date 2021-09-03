@@ -63,39 +63,42 @@ app.get("/api/member", (req, res) => {
     else res.send(err);
   });
 });
+app.post("/api/main_tap_data2", (req, res) => {
+  console.log("전달")
 
+  for (let i = 0; i < req.body.length; i++) {
+    connection.query(
+      "INSERT INTO TB_SUPPORT_BUSINESS (idx, title, content, status, gubun, area, work, sup_type, sup_pay, sup_condition, start_day, end_day, time, all_day_yn, homepage, recommend, tag, reg_id, reg_date, udp_date, use_yn, view_cnt, udp_id, att_cnt ) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      [
+        req.body[i].idx,
+        req.body[i].title,
+        req.body[i].content,
+        req.body[i].status,
+        req.body[i].gubun,
+        req.body[i].area,
+        req.body[i].work,
+        req.body[i].sup_type,
+        req.body[i].sup_pay,
+        req.body[i].sup_condition,
+        req.body[i].start_day,
+        req.body[i].end_day,
+        req.body[i].time,
+        req.body[i].all_day_yn,
+        req.body[i].homepage,
+        req.body[i].recommend,
+        req.body[i].tag,
+        req.body[i].reg_id,
+        req.body[i].reg_date,
+        req.body[i].udp_date,
+        req.body[i].use_yn,
+        req.body[i].view_cnt,
+        req.body[i].udp_id,
+        req.body[i].att_cnt
+      ]
+    )
+  }
+});
 app.post("/api/member", (req, res) => {
-  const user_id = req.body;
-  const sql = `INSERT INTO TB_MEMBER VALUES (?)`;
-  const textbox = {
-    email: req.body.email,
-    pwd: req.body.pwd,
-    phone_no: req.body.phone_no,
-    name: req.body.name,
-    company_name: req.body.company_name,
-    position: req.body.position,
-    ceo_name: req.body.ceo_name,
-    ceo_birth: req.body.ceo_birth,
-    ceo_gender: req.body.ceo_gender,
-    business_type: req.body.business_type,
-    business_no: req.body.business_no,
-    business_area: req.body.business_area,
-    interested_area: req.body.interested_area,
-    main_work: req.body.main_work,
-    int_work1: req.body.int_work1,
-    int_work2: req.body.int_work2,
-    birthday: req.body.birthday,
-    company_birth: req.body.company_birth,
-    att_work: req.body.att_work,
-    reg_date: req.body.reg_date,
-    udp_date: req.body.udp_date,
-    auth: req.body.auth,
-    use_yn: req.body.use_yn,
-    idx: req.body.idx,
-    push_yn: req.body.push_yn,
-    email_yn: req.body.email_yn,
-    udp_id: req.body.udp_id,
-  };
   connection.query(
     "INSERT INTO TB_MEMBER (email, pwd, phone_no, name, company_name, position, ceo_name, ceo_birth, ceo_gender, business_type, business_no, business_area, interested_area, main_work, int_work1, int_work2, birthday, company_birth, att_work, reg_date, udp_date, auth, use_yn, idx, push_yn, email_yn, udp_id ) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
     [
