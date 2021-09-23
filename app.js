@@ -28,14 +28,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/api/main_tap_data", (req, res) => {
+app.get("/nael/api/main_tap_data", (req, res) => {
   db.query("SELECT * FROM tomo.TB_SUPPORT_BUSINESS;", (err, data) => {
     if (!err) res.send({ data });
     else res.send(err);
   });
 });
 
-app.get("/api/news_data", async (req, res) => {
+app.get("/nael/api/news_data", async (req, res) => {
   db.query("SELECT * FROM tomo.TB_NEWS;", async (err, data) => {
     if (!err) {
       res.send({ data });
@@ -43,27 +43,27 @@ app.get("/api/news_data", async (req, res) => {
   });
 });
 
-app.get("/api/stage_data", (req, res) => {
+app.get("/nael/api/stage_data", (req, res) => {
   db.query("SELECT * FROM tomo.TB_STAGE;", (err, data) => {
     if (!err) res.send({ data });
     else res.send(err);
   });
 });
 
-app.get("/api/image", (req, res) => {
+app.get("/nael/api/image", (req, res) => {
   db.query("SELECT * FROM tomo.TB_FILE;", (err, data) => {
     if (!err) res.send({ data });
     else res.send(err);
   });
 });
 
-app.get("/api/member", (req, res) => {
+app.get("/nael/api/member", (req, res) => {
   db.query("SELECT * FROM tomo.TB_MEMBER;", (err, data) => {
     if (!err) res.send({ data });
     else res.send(err);
   });
 });
-app.post("/api/main_tap_data2", (req, res) => {
+app.post("/nael/api/main_tap_data2", (req, res) => {
   console.log("전달")
 
   for (let i = 0; i < req.body.length; i++) {
@@ -98,7 +98,7 @@ app.post("/api/main_tap_data2", (req, res) => {
     )
   }
 });
-app.post("/api/member", (req, res) => {
+app.post("/nael/api/member", (req, res) => {
   connection.query(
     "INSERT INTO TB_MEMBER (email, pwd, phone_no, name, company_name, position, ceo_name, ceo_birth, ceo_gender, business_type, business_no, business_area, interested_area, main_work, int_work1, int_work2, birthday, company_birth, att_work, reg_date, udp_date, auth, use_yn, idx, push_yn, email_yn, udp_id ) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
     [
